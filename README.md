@@ -6,7 +6,7 @@ A Flutter based fitness app solely focused on fitness related solutions.
 - [Setup Git](https://git-scm.com/downloads)
 - [Set up flutter and Android Studio](https://flutter.dev/docs/get-started/install)
 - [Or setting up VS code for flutter](https://flutter.dev/docs/development/tools/vs-code)
-- 
+
 **Note: Recommend using the latest version so as to avoid any issues related to depreciated methods/widgets.**
 
 ## Local Setup
