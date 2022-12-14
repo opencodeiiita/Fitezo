@@ -1,5 +1,10 @@
-# Fitezo
+# OpenCode22
+## Fitezo
 A Flutter based fitness app solely focused on fitness related solutions.
+
+## Tech Stack 
+* Flutter
+* Firebase
 
 ## Getting Started
 
