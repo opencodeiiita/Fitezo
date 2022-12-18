@@ -39,9 +39,9 @@ class _myAppState extends State<myApp> {
                 ],
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Container(
+          
+   
+               Container(
                 width: double.infinity,
                 height: 500,
                 child: const Center(
@@ -50,7 +50,7 @@ class _myAppState extends State<myApp> {
                   style: TextStyle(fontSize: 30),
                 )),
               ),
-            ),
+            
           ],
         )),
       ),
