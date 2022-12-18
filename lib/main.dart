@@ -25,9 +25,8 @@ class _myAppState extends State<myApp> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              height: 100.0,
+              height: 60.0,
               color: Colors.black,
-              margin: const EdgeInsets.symmetric(vertical: 10.0),
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Row(
                 // ignore: prefer_const_literals_to_create_immutables
