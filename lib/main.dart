@@ -1,3 +1,4 @@
+import 'package:fitezo/list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -5,7 +6,8 @@ void main() {
 }
 
 class myApp extends StatefulWidget {
-  const myApp({Key? key}) : super(key: key);
+  
+   myApp({Key? key}) : super(key: key);
 
   @override
   State<myApp> createState() => _myAppState();
@@ -14,7 +16,7 @@ class myApp extends StatefulWidget {
 class _myAppState extends State<myApp> {
   @override
   Widget build(BuildContext context) {
-   
+    final List conti=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'];
     return MaterialApp(
       
       debugShowCheckedModeBanner: false,
@@ -22,7 +24,8 @@ class _myAppState extends State<myApp> {
         child: Scaffold(
             body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
+          children: [
+    
             Container(
               width: double.infinity,
               height: 60.0,
@@ -39,18 +42,18 @@ class _myAppState extends State<myApp> {
                 ],
               ),
             ),
-          
-   
-               Container(
-                width: double.infinity,
-                height: 500,
-                child: const Center(
-                    child: Text(
-                  "Welcome",
-                  style: TextStyle(fontSize: 30),
-                )),
-              ),
-            
+           
+          Expanded(
+            child: ListView.builder(
+            itemCount: conti.length,
+            itemBuilder: (context, index)
+            {
+                return ListContainer(
+                con: conti[index],
+              );
+            }
+            ),
+          )
           ],
         )),
       ),
