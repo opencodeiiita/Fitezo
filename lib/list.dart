@@ -7,15 +7,39 @@ class ListContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
       child: Container(
         width: double.infinity,
         height: 300,
-        
-        color: Colors.grey,
-        child:  Center(
-            
-            child: Text(con,style: TextStyle(fontSize: 30),
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
+            topRight: Radius.circular(50.0),
+            bottomRight: Radius.circular(00.0),
+            topLeft: Radius.circular(0.0),
+            bottomLeft: Radius.circular(50.0),
+          ),
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xffF53844),
+              Color(0xff42378F),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.blueGrey.withOpacity(0.5),
+              spreadRadius: 3,
+              blurRadius: 3,
+              offset: const Offset(1, 2),
+            ),
+          ],
+        ),
+        child: Center(
+            child: Text(
+          con,
+          style: const TextStyle(fontSize: 30, color: Colors.white),
         )),
       ),
     );
