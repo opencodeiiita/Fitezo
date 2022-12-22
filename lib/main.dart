@@ -5,6 +5,8 @@ void main() {
   runApp(myApp());
 }
 
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 class myApp extends StatefulWidget {
   myApp({Key? key}) : super(key: key);
 
@@ -41,30 +43,7 @@ class _myAppState extends State<myApp> {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            title: const Text(
-              'Fitezo',
-              style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.white70,
-                  fontWeight: FontWeight.bold),
-            ),
-            backgroundColor: Colors.black,
-          ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: ListView.builder(
-                    itemCount: conti.length,
-                    itemBuilder: (context, index) {
-                      return ListContainer(
-                        con: conti[index],
-                      );
-                    }),
-              ),
-            ],
-          ),
+          key: _scaffoldKey,
           drawer: Drawer(
             child: ListView(
               // padding: const EdgeInsets.all(10),
@@ -101,6 +80,54 @@ class _myAppState extends State<myApp> {
                 ),
               ],
             ),
+          ),
+          body: Stack(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 40.0,
+                    color: Colors.black,
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Row(
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: <Widget>[
+                        SizedBox(
+                          width: 30,
+                        ),
+                        const Text(
+                          'Fitezo',
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.white70,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                        itemCount: conti.length,
+                        itemBuilder: (context, index) {
+                          return ListContainer(
+                            con: conti[index],
+                          );
+                        }),
+                  ),
+                ],
+              ),
+              InkWell(
+                child: IconButton(
+                  icon: Icon(
+                    Icons.menu,
+                    color: Colors.white70,
+                  ),
+                  onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+                ),
+              ),
+            ],
           ),
         ),
       ),
