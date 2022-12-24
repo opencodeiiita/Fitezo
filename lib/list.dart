@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:fitezo/test.dart';
+import 'package:fitezo/mainscreen.dart';
 class ListContainer extends StatelessWidget {
   final String con;
   ListContainer({required this.con});
@@ -8,6 +9,12 @@ class ListContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0),
+      // ignore: unnecessary_new
+      child: new GestureDetector(   
+        onTap: (){
+           Navigator.push(context,MaterialPageRoute(builder: (context) =>  test(contin: con,),),
+  );
+        },
       child: Container(
         width: double.infinity,
         height: 300,
@@ -37,11 +44,11 @@ class ListContainer extends StatelessWidget {
           ],
         ),
         child: Center(
-            child: Text(
-          con,
+            child: Text(con,
           style: const TextStyle(fontSize: 30, color: Colors.white),
         )),
       ),
+    ),
     );
   }
 }
