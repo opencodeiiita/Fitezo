@@ -47,7 +47,7 @@ class _SplashState extends State<Splash> {
       splashTransition: SplashTransition.scaleTransition,
       splash: Image.asset('assets/pragya1.png', height: 200.0, width: 200.0,),
       backgroundColor: Color.fromARGB(255, 252, 251, 253),
-      duration: 30000,
+      duration: 3000,
       // 
       // backgroundColor: Color.fromARGB(19, 150, 213, 229),
     );

@@ -46,7 +46,7 @@ class _MainscreenState extends State<Mainscreen> {
                 child: Text(""),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("../assets/VedantFitezo.png"),
+                    image: AssetImage("assets/pragya1.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -75,31 +75,43 @@ class _MainscreenState extends State<Mainscreen> {
             ],
           ),
         ),
-        body: Stack(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+        body:
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Container(
-                  width: double.infinity,
-                  height: 40.0,
-                  color: Colors.black,
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Row(
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: <Widget>[
-                      SizedBox(
-                        width: 30,
+
+                Builder(
+                  builder: (context) {
+                    return Container(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.08,
+                      color: Colors.black,
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Row(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: <Widget>[
+                          InkWell(
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.menu,
+                                color: Colors.white70,
+                              ),
+                              onPressed: () => Scaffold.of(context).openDrawer(),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          const Text(
+                            'Fitezo',
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.white70,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                      const Text(
-                        'Fitezo',
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.white70,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                    );
+                  }
                 ),
                 Expanded(
                   child: ListView.builder(
@@ -112,17 +124,8 @@ class _MainscreenState extends State<Mainscreen> {
                 ),
               ],
             ),
-            InkWell(
-              child: IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.white70,
-                ),
-                onPressed: () => _scaffoldKey.currentState?.openDrawer(),
-              ),
-            ),
-          ],
-        ),
+
+
       ),
     );
   }
