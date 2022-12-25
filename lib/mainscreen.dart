@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fitezo/list.dart';
 
-
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 class Mainscreen extends StatefulWidget {
   const Mainscreen({super.key});
 
@@ -75,57 +75,52 @@ class _MainscreenState extends State<Mainscreen> {
             ],
           ),
         ),
-        body:
-            Column(crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-
-                Builder(
-                  builder: (context) {
-                    return Container(
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.08,
-                      color: Colors.black,
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Row(
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: <Widget>[
-                          InkWell(
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.menu,
-                                color: Colors.white70,
-                              ),
-                              onPressed: () => Scaffold.of(context).openDrawer(),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          const Text(
-                            'Fitezo',
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white70,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Builder(builder: (context) {
+              return Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.08,
+                color: Colors.black,
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Row(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: <Widget>[
+                    InkWell(
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.menu,
+                          color: Colors.white70,
+                        ),
+                        onPressed: () => Scaffold.of(context).openDrawer(),
                       ),
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    const Text(
+                      'Fitezo',
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white70,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              );
+            }),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: conti.length,
+                  itemBuilder: (context, index) {
+                    return ListContainer(
+                      con: conti[index],
                     );
-                  }
-                ),
-                Expanded(
-                  child: ListView.builder(
-                      itemCount: conti.length,
-                      itemBuilder: (context, index) {
-                        return ListContainer(
-                          con: conti[index],
-                        );
-                      }),
-                ),
-              ],
+                  }),
             ),
-
-
+          ],
+        ),
       ),
     );
   }
