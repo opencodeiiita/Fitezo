@@ -1,3 +1,4 @@
+import 'package:fitezo/mainscreen.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -12,104 +13,109 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xffFFF886),
-                Color(0xffF072B6),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+    return Scaffold(
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xffFFF886),
+                  Color(0xffF072B6),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
             ),
-          ),
-          child: Column(
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.4,
-                width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/pragya1.png"),
-                    fit: BoxFit.cover,
+            child: Column(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/pragya1.png"),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.95,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.person),
-                    hintText: 'Name',
-                  ),
-                  validator: (Value) {
-                    if (Value == null || Value.isEmpty) {
-                      return 'The field cannot be empty.';
-                    }
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.person),
+                      hintText: 'Name',
+                    ),
+                    validator: (Value) {
+                      if (Value == null || Value.isEmpty) {
+                        return 'The field cannot be empty.';
+                      }
 
-                    return null;
-                  },
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.95,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.phone),
-                    hintText: 'Phone Number',
+                      return null;
+                    },
                   ),
-                  validator: (Value) {
-                    if (Value == null || Value.isEmpty) {
-                      return 'The field cannot be empty.';
-                    }
-
-                    return null;
-                  },
                 ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.95,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.password_outlined),
-                    hintText: 'Password',
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.01,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.phone),
+                      hintText: 'Phone Number',
+                    ),
+                    validator: (Value) {
+                      if (Value == null || Value.isEmpty) {
+                        return 'The field cannot be empty.';
+                      }
+
+                      return null;
+                    },
                   ),
-                  validator: (Value) {
-                    if (Value == null || Value.isEmpty) {
-                      return 'The field cannot be empty.';
-                    }
-
-                    return null;
-                  },
                 ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')),
-                      );
-                    }
-                  },
-                  child: const Text("Submit"))
-            ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.01,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.password_outlined),
+                      hintText: 'Password',
+                    ),
+                    validator: (Value) {
+                      if (Value == null || Value.isEmpty) {
+                        return 'The field cannot be empty.';
+                      }
+
+                      return null;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.03,
+                ),
+                ElevatedButton(
+                    onPressed: () async{
+                      if (_formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Processing Data'))
+
+                        );
+                       await Future.delayed(Duration(milliseconds: 2000));
+                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mainscreen()));
+                      }
+                    },
+                    child: const Text("Submit"))
+              ],
+            ),
           ),
         ),
       ),

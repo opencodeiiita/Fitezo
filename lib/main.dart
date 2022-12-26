@@ -1,3 +1,4 @@
+import 'package:fitezo/login.dart';
 import 'package:fitezo/mainscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -35,7 +36,7 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      nextScreen: const Mainscreen(),
+      nextScreen: const Login(),
 
       splashIconSize: 300.0,
       splashTransition: SplashTransition.scaleTransition,
