@@ -34,7 +34,7 @@ class Profile extends StatelessWidget {
                       'https://media.istockphoto.com/id/1168369629/photo/happy-smiling-african-american-child-girl-yellow-background.jpg?s=612x612&w=0&k=20&c=qNP1LnRN6n_pGDBkD3axUdh1V1R53pdWWymHAhgNZag='),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: h / 175,
                 ),
                 Text(
                   'Harper',
@@ -45,7 +45,7 @@ class Profile extends StatelessWidget {
                   style: GoogleFonts.firaSans(fontWeight: FontWeight.w300),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: h / 300,
                 ),
                 Text(
                   "+91 9876541230",
@@ -58,7 +58,7 @@ class Profile extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: w / 20, vertical: h / 55),
                     child: Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor sed incididunt ut labore et dolore magna aliqua.',
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor sed incididunt ut labore.',
                       style: GoogleFonts.frankRuhlLibre(
                           fontWeight: FontWeight.w100),
                     ),
