@@ -1,5 +1,7 @@
 import 'package:fitezo/mainscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:fitezo/transitionanimation.dart';
+
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -110,7 +112,8 @@ class _LoginState extends State<Login> {
 
                         );
                        await Future.delayed(Duration(milliseconds: 2000));
-                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mainscreen()));
+                        // ignore: prefer_const_constructors, use_build_context_synchronously
+                        Navigator.push(context, Transit(widget: Mainscreen()));
                       }
                     },
                     child: const Text("Submit"))
