@@ -1,4 +1,5 @@
 import 'package:fitezo/Profile.dart';
+import 'package:fitezo/fitDiet.dart';
 import 'package:fitezo/login.dart';
 import 'package:fitezo/mainscreen.dart';
 import 'package:flutter/material.dart';
@@ -20,29 +21,30 @@ class _myAppState extends State<myApp> {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Fitezo",
-            style: TextStyle(
-                fontSize: 25,
-                color: Colors.white70,
-                fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Colors.black,
-        ),
-        body: Container(
-          width: double.infinity,
-          height: 500,
-          child: Center(
-              child: Text(
-            "Welcome",
-            style: TextStyle(fontSize: 30),
-          )),
-        ),
-      home: const Splash(),
-    );
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text(
+                "Fitezo",
+                style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold),
+              ),
+              backgroundColor: Color(0xffb482d9),
+            ),
+            body:
+                // Container(
+                //   width: double.infinity,
+                //   height: 500,
+                //   child: Center(
+                //       child: Text(
+                //     "Welcome",
+                //     style: TextStyle(fontSize: 30),
+                //   )),
+                // ),
+                // home: const Splash(),
+                Splash()));
   }
 }
 
