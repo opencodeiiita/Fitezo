@@ -16,9 +16,7 @@ class ListContainer extends StatelessWidget {
       // ignore: unnecessary_new
       child: new GestureDetector(
         onTap: () {
-          Navigator.push(
-            context, Transit(widget: test(contin: con))
-          );
+          Navigator.push(context, Transit(widget: test(contin: con)));
         },
         child: Container(
           width: double.infinity,
