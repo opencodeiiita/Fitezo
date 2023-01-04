@@ -20,10 +20,10 @@ class DisplayExercise extends StatelessWidget {
           SizedBox(
             height: h / 80,
           ),
-          textFields(txt: 'Name: ' + user.name, h: h),
-          textFields(txt: 'Equipment: ' + user.equipment, h: h),
-          textFields(txt: 'Target: ' + user.target, h: h),
-          textFields(txt: 'Bodypart: ' + user.bodyPart, h: h),
+          textFields(txt: user.name, h: h),
+          textFields(txt: user.equipment, h: h),
+          textFields(txt: user.target, h: h),
+          textFields(txt: user.bodyPart, h: h),
         ],
       ),
     ));
