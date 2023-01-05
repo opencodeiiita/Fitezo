@@ -1,3 +1,5 @@
+import 'package:fitezo/displayExercise.dart';
+import 'package:fitezo/login.dart';
 import 'package:fitezo/transitionanimation.dart';
 import 'package:flutter/material.dart';
 import 'package:fitezo/test.dart';
@@ -6,21 +8,26 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
 class ListContainer extends StatelessWidget {
-  final String con;
-  ListContainer({required this.con});
+  final User user;
+  ListContainer({required this.user});
 
   @override
   Widget build(BuildContext context) {
+    double h = (MediaQuery.of(context).size.height),
+        w = (MediaQuery.of(context).size.width);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0),
       // ignore: unnecessary_new
       child: new GestureDetector(
         onTap: () {
-          Navigator.push(context, Transit(widget: test(contin: con)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => DisplayExercise(user: user)));
         },
         child: Container(
           width: double.infinity,
-          height: 300,
+          height: h / 3,
           margin: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
@@ -47,10 +54,23 @@ class ListContainer extends StatelessWidget {
             ],
           ),
           child: Center(
-              child: Text(
-            con,
-            style: const TextStyle(fontSize: 30, color: Colors.white),
-          )),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.network(
+                  user.gif,
+                  height: h / 4,
+                ),
+                SizedBox(
+                  height: h / 100,
+                ),
+                Text(
+                  user.name,
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

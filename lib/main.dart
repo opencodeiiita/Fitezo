@@ -44,7 +44,7 @@ class _myAppState extends State<myApp> {
                 //   )),
                 // ),
                 // home: const Splash(),
-                Splash()));
+                Mainscreen()));
   }
 }
 

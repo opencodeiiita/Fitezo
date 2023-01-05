@@ -1,5 +1,8 @@
+import 'dart:convert';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:fitezo/list.dart';
+import 'package:http/http.dart' as http;
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -10,31 +13,53 @@ class Mainscreen extends StatefulWidget {
   State<Mainscreen> createState() => _MainscreenState();
 }
 
+late Future<List<User>> futureUser;
+Future<List<User>> fetchUser() async {
+  final response = await http
+      .get(Uri.parse('https://exercisedb.p.rapidapi.com/exercises'), headers: {
+    "X-RapidAPI-Key": "9c275cc52amshe1da7cef762dc85p1ca7e2jsn103cf54be772",
+    "X-RapidAPI-Host": "exercisedb.p.rapidapi.com"
+  });
+
+  if (response.statusCode == 200) {
+    final parsed = json.decode(response.body).cast<Map<String, dynamic>>();
+
+    return parsed.map<User>((json) => User.fromJson(json)).toList();
+  } else {
+    throw Exception('Failed to load album');
+  }
+}
+
 class _MainscreenState extends State<Mainscreen> {
   @override
+  void initState() {
+    super.initState();
+    futureUser = fetchUser();
+  }
+
   Widget build(BuildContext context) {
-    final List conti = [
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
-      '7',
-      '8',
-      '9',
-      '10',
-      '11',
-      '12',
-      '13',
-      '14',
-      '15',
-      '16',
-      '17',
-      '18',
-      '19',
-      '20'
-    ];
+    // final List conti = [
+    //   '1',
+    //   '2',
+    //   '3',
+    //   '4',
+    //   '5',
+    //   '6',
+    //   '7',
+    //   '8',
+    //   '9',
+    //   '10',
+    //   '11',
+    //   '12',
+    //   '13',
+    //   '14',
+    //   '15',
+    //   '16',
+    //   '17',
+    //   '18',
+    //   '19',
+    //   '20'
+    // ];
     return SafeArea(
       child: Scaffold(
         key: _scaffoldKey,
@@ -111,17 +136,51 @@ class _MainscreenState extends State<Mainscreen> {
               );
             }),
             Expanded(
-              child: ListView.builder(
-                  itemCount: conti.length,
-                  itemBuilder: (context, index) {
-                    return ListContainer(
-                      con: conti[index],
-                    );
-                  }),
-            ),
+                child: FutureBuilder<List<User>>(
+              future: futureUser,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(itemBuilder: ((context, index) {
+                    return GestureDetector(
+                        onTap: (() {}),
+                        child: ListContainer(
+                          user: snapshot.data![index],
+                        ));
+                  }));
+                  // Text(snapshot.data!.length.toString());
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+
+                // By default, show a loading spinner.
+                return const CircularProgressIndicator();
+              },
+            )),
           ],
         ),
       ),
+    );
+  }
+}
+
+class User {
+  final String name, target, bodyPart, gif, id, equipment;
+  User({
+    required this.name,
+    required this.target,
+    required this.bodyPart,
+    required this.gif,
+    required this.id,
+    required this.equipment,
+  });
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      name: json['name'],
+      target: json['target'],
+      bodyPart: json['bodyPart'],
+      gif: json['gifUrl'],
+      id: json['id'],
+      equipment: json['equipment'],
     );
   }
 }
