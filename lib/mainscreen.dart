@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'package:fitezo/fitDiet.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:fitezo/list.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -61,12 +63,13 @@ class _MainscreenState extends State<Mainscreen> {
     //   '20'
     // ];
     return SafeArea(
+      // ignore: sort_child_properties_last
       child: Scaffold(
         key: _scaffoldKey,
         drawer: Drawer(
           child: ListView(
             // padding: const EdgeInsets.all(10),
-            children: const [
+            children:  [
               DrawerHeader(
                 child: Text(""),
                 decoration: BoxDecoration(
@@ -82,6 +85,21 @@ class _MainscreenState extends State<Mainscreen> {
                   color: Color.fromARGB(255, 81, 18, 18),
                 ),
                 title: const Text('Tips'),
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.health_and_safety,
+                  color: Color.fromARGB(255, 81, 18, 18),
+                ),
+                title: Text('Calorie Profiles'),
+               
+                
+                onTap: () async => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FitDiet(),
+                    ),
+                  ),
               ),
               ListTile(
                 leading: const Icon(
