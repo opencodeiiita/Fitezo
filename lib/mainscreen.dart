@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:fitezo/fitDiet.dart';
+import 'package:fitezo/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:fitezo/list.dart';
@@ -107,6 +108,12 @@ class _MainscreenState extends State<Mainscreen> {
                   color: Color.fromARGB(255, 81, 18, 18),
                 ),
                 title: const Text('Profile'),
+                onTap: () async => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Profile(),
+                    ),
+                  ),
               ),
               ListTile(
                 leading: const Icon(
