@@ -10,23 +10,36 @@ class DisplayExercise extends StatelessWidget {
   Widget build(BuildContext context) {
     double h = (MediaQuery.of(context).size.height),
         w = (MediaQuery.of(context).size.width);
-    return SafeArea(
-        child: Container(
-      padding: EdgeInsets.symmetric(horizontal: w / 40, vertical: h / 80),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.network(user.gif),
-          SizedBox(
-            height: h / 80,
+    return Scaffold(
+        appBar: AppBar(
+            title: Text(
+              user.name,
+            ),
+            centerTitle: true,
+            backgroundColor: Color(0xff8485e5),
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.arrow_back_ios))),
+        body: Container(
+          decoration: BoxDecoration(color: Colors.white),
+          padding: EdgeInsets.symmetric(horizontal: w / 40, vertical: h / 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.network(user.gif),
+              SizedBox(
+                height: h / 80,
+              ),
+              // Spacer(),
+              textFields(txt: user.equipment, h: h),
+              textFields(txt: user.target, h: h),
+              textFields(txt: user.bodyPart, h: h),
+            ],
           ),
-          textFields(txt: user.name, h: h),
-          textFields(txt: user.equipment, h: h),
-          textFields(txt: user.target, h: h),
-          textFields(txt: user.bodyPart, h: h),
-        ],
-      ),
-    ));
+        ));
   }
 }
 
@@ -42,20 +55,26 @@ class textFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          txt,
-          style: GoogleFonts.poppins(
-            fontSize: 20,
-            decoration: TextDecoration.none,
-            color: Color.fromARGB(255, 255, 222, 197),
+    return Center(
+      child: Column(
+        children: [
+          Text(
+            txt,
+            style: GoogleFonts.poppins(
+                fontSize: 25,
+                decoration: TextDecoration.none,
+                color: Colors.black,
+                fontWeight: FontWeight.w500),
           ),
-        ),
-        SizedBox(
-          height: h / 80,
-        ),
-      ],
+          SizedBox(
+            height: h / 60,
+          ),
+        ],
+      ),
     );
   }
 }
+
+List<BoxShadow> shadow = [
+  BoxShadow(color: Colors.grey[300]!, blurRadius: 30, offset: Offset(0, 10))
+];
