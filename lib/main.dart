@@ -31,7 +31,7 @@ class _myAppState extends State<myApp> {
                     color: Colors.white70,
                     fontWeight: FontWeight.bold),
               ),
-              backgroundColor: Color(0xffb482d9),
+              backgroundColor: Color(0xff8485e5),
             ),
             body:
                 // Container(
