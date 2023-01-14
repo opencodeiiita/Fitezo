@@ -26,17 +26,21 @@ class FitDiet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
-              // mainAxisSpacing: 10,
-              // crossAxisSpacing: 10,
-            ),
-            itemCount: grid.length,
-            itemBuilder: (context, index) {
-              return GridContainer(
-                con: grid[index],
-              );
-            }));
+      child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+            title: Text("Calorie Profiles"),
+          ),
+          body: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemCount: grid.length,
+              itemBuilder: (context, index) {
+                return GridContainer(
+                  con: grid[index],
+                );
+              })),
+    );
   }
 }
